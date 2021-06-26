@@ -1,0 +1,16 @@
+version: "2"
+services:
+  pg:
+    image: postgres
+    environment:
+      - POSTGRES_USER=enes
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=chat
+    ports:
+      - "5433:5432"
+  server:
+    build: .
+    ports:
+      - "1234:1234"
+    depends_on:
+      - pg
