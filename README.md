@@ -3,7 +3,7 @@
 ### Running the Server
 > Run command below at project root directory.
   
-	docker-compose up
+	docker-compose up --build
 
 ### Building and Running the Client
 > Run command below at client directory.
