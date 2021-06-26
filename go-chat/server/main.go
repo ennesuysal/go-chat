@@ -3,6 +3,8 @@ package main
 import (
 	"com.enesuysal/go-chat/api"
 	"context"
+	"crypto/md5"
+	"encoding/hex"
 	"github.com/rsms/gotalk"
 	"log"
 )
@@ -72,7 +74,8 @@ func server() {
 			user, _ = api.CreateUser(context.Background(), in.Username, in.Name, in.Surname, db)
 		}
 
-		token := Token{Tkn: in.Username}
+		t := md5.Sum([]byte(in.Username))
+		token := Token{Tkn: hex.EncodeToString(t[:])}
 		user.Update().SetToken(token.Tkn).SetIsOnline(1).Save(context.Background())
 
 		ol, _ := api.QueryOnlineUsers(context.Background(), db)
