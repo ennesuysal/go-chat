@@ -8,6 +8,7 @@ services:
       - POSTGRES_DB=chat
   server:
     build: .
+    restart: always
     ports:
       - "1234:1234"
     depends_on:
