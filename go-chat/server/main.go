@@ -134,10 +134,9 @@ func server() {
 		return result, nil
 	})
 
+	fmt.Printf("%s\n", "Listening on 0.0.0.0:1234")
 	if err := gotalk.Serve("tcp", "0.0.0.0:1234", nil); err != nil {
 		log.Fatalln(err)
-	} else {
-		fmt.Printf("%s\n", "Listening on 0.0.0.0:1234")
 	}
 }
 
